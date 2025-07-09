@@ -1,3 +1,4 @@
+// src/Footer.jsx
 import React from 'react';
 
 /**

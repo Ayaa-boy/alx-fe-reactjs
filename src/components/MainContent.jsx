@@ -1,9 +1,5 @@
 import React from 'react';
 
-/**
- * MainContent Component
- * This functional component displays the main content of the application.
- */
 function MainContent() {
   return (
     <main className="p-6 bg-white text-gray-800 text-center shadow-md">
