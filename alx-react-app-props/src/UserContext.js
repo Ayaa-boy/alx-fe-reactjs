@@ -1,8 +1,9 @@
 // src/UserContext.js
-import React from 'react'; // <-- Crucial: React must be imported
+import React from 'react'; // Make sure React is imported!
 
 // Initialize and export the UserContext
-// A default value (like null or an empty object) is good practice, but not strictly required
+// The argument to createContext is the default value, used if a component
+// consumes the context without a Provider above it. null is fine here.
 const UserContext = React.createContext(null);
 
-export default UserContext; // <-- Essential for importing in other files
+export default UserContext; // This export is essential

@@ -1,10 +1,11 @@
-// src/UserDetails.jsx (Modified to Consume Context)
+// src/UserDetails.jsx (Refactored to Consume Context)
 import React, { useContext } from 'react'; // <-- Import useContext hook
-import UserContext from './UserContext';    // <-- Import UserContext
+import UserContext from './UserContext';    // <-- Import your UserContext
 
-// UserDetails no longer receives userData as a prop directly
+// UserDetails no longer needs to accept userData as a prop
 function UserDetails() {
-  const userData = useContext(UserContext); // <-- Consume the context value
+  // Use useContext to get the userData value from the nearest UserContext.Provider
+  const userData = useContext(UserContext);
 
   return (
     <div style={{ border: '1px solid lightgreen', padding: '10px', margin: '10px', backgroundColor: '#e6ffe6' }}>

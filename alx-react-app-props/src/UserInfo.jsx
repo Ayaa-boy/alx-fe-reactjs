@@ -1,4 +1,4 @@
-// src/UserInfo.jsx (Refactored for Context API)
+// src/UserInfo.jsx (Refactored - No more prop drilling)
 import React from 'react';
 import UserDetails from './UserDetails';
 
