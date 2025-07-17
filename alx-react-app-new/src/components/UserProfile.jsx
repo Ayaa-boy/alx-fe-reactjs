@@ -4,21 +4,13 @@ import React from 'react';
 const UserProfile = (props) => {
   return (
     <div style={{
-      border: '1px solid #ddd', // Lighter border
-      borderRadius: '8px',
-      padding: '20px',
-      margin: '20px auto', // Center the card
-      maxWidth: '350px',
-      boxShadow: '0 4px 8px rgba(0,0,0,0.1)', // Subtle shadow
-      backgroundColor: '#f9f9f9' // Light background
+      border: '1px solid gray', // Keep it gray as per the prompt's example base
+      padding: '10px',
+      margin: '10px'
     }}>
-      <h2 style={{ color: '#333', fontSize: '1.8em', marginBottom: '10px' }}>{props.name}</h2>
-      <p style={{ fontSize: '1.1em', color: '#555' }}>
-        Age: <span style={{ fontWeight: 'bold', color: '#007bff' }}>{props.age}</span>
-      </p>
-      <p style={{ fontSize: '1em', color: '#666', lineHeight: '1.5' }}>
-        Bio: {props.bio}
-      </p>
+      <h2 style={{ color: 'blue' }}>{props.name}</h2> {/* Ensured color is 'blue' */}
+      <p>Age: <span style={{ fontWeight: 'bold' }}>{props.age}</span></p>
+      <p>Bio: {props.bio}</p>
     </div>
   );
 };
