@@ -7,11 +7,12 @@ import WelcomeMessage from './components/WelcomeMessage'
 import Header from './components/Header';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
-import UserProfile from './components/UserProfile'; // Import the new UserProfile component
+import UserProfile from './components/UserProfile';
+import Counter from './components/Counter'; // Import the new Counter component
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0) // This count state is from the original App.jsx setup, not the new Counter component
 
   return (
     <>
@@ -31,31 +32,29 @@ function App() {
 
       <hr />
 
-      {/* Components for Task 2 */}
+      {/* Components for Task 0.2 (Header, MainContent, Footer) */}
       <Header />
       <MainContent />
       <Footer />
 
       <hr />
 
-      {/* New UserProfile Component for Task 3 */}
+      {/* UserProfile Component for Task 0.3 */}
       <UserProfile
         name="Alice"
         age="25"
         bio="Loves hiking and photography"
       />
-      {/* You can add more UserProfile components with different data if you like */}
-      {/*
-      <UserProfile
-        name="Bob"
-        age="30"
-        bio="Enjoys coding and video games"
-      />
-      */}
 
       <hr />
 
-      {/* Existing Counter and Read Docs Paragraph */}
+      {/* New Counter Component for Task 1 */}
+      <Counter /> {/* Include the Counter component here */}
+
+      <hr />
+
+      {/* Original App.jsx Counter (You can remove this if it's confusing,
+          as we now have a dedicated Counter component) */}
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
