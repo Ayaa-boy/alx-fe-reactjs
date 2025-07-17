@@ -3,10 +3,11 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import WelcomeMessage from './components/WelcomeMessage' // Keep this if you want the previous content
-import Header from './components/Header';       // Import the new Header component
-import MainContent from './components/MainContent'; // Import the new MainContent component
-import Footer from './components/Footer';     // Import the new Footer component
+import WelcomeMessage from './components/WelcomeMessage'
+import Header from './components/Header';
+import MainContent from './components/MainContent';
+import Footer from './components/Footer';
+import UserProfile from './components/UserProfile'; // Import the new UserProfile component
 
 
 function App() {
@@ -28,14 +29,31 @@ function App() {
       {/* Your previous WelcomeMessage component */}
       <WelcomeMessage />
 
-      <hr /> {/* Added a horizontal rule for visual separation */}
+      <hr />
 
-      {/* New Components for Task 2 */}
+      {/* Components for Task 2 */}
       <Header />
       <MainContent />
       <Footer />
 
-      <hr /> {/* Another horizontal rule */}
+      <hr />
+
+      {/* New UserProfile Component for Task 3 */}
+      <UserProfile
+        name="Alice"
+        age="25"
+        bio="Loves hiking and photography"
+      />
+      {/* You can add more UserProfile components with different data if you like */}
+      {/*
+      <UserProfile
+        name="Bob"
+        age="30"
+        bio="Enjoys coding and video games"
+      />
+      */}
+
+      <hr />
 
       {/* Existing Counter and Read Docs Paragraph */}
       <div className="card">
