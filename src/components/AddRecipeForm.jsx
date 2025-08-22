@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 3bc07ab (Initialize Recipe Sharing App with Zustand)
 import { useState } from 'react';
 import { useRecipeStore } from '../recipeStore';
 
@@ -7,6 +10,7 @@ const AddRecipeForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
+<<<<<<< HEAD
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!title.trim() || !description.trim()) return;
@@ -17,16 +21,27 @@ const AddRecipeForm = () => {
       description
     });
 
+=======
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!title || !description) return;
+    addRecipe({ id: Date.now(), title, description });
+>>>>>>> 3bc07ab (Initialize Recipe Sharing App with Zustand)
     setTitle('');
     setDescription('');
   };
 
   return (
+<<<<<<< HEAD
     <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
+=======
+    <form onSubmit={handleSubmit}>
+>>>>>>> 3bc07ab (Initialize Recipe Sharing App with Zustand)
       <input
         type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+<<<<<<< HEAD
         placeholder="Recipe Title"
         required
       />
@@ -71,6 +86,15 @@ const AddRecipeForm = () => {
         required
       />
 >>>>>>> 98654fa (Enhancing Recipe Sharing App with detailed management)
+=======
+        placeholder="Title"
+      />
+      <textarea
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        placeholder="Description"
+      />
+>>>>>>> 3bc07ab (Initialize Recipe Sharing App with Zustand)
       <button type="submit">Add Recipe</button>
     </form>
   );

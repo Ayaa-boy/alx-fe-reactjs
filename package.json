@@ -12,12 +12,16 @@
   "dependencies": {
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+<<<<<<< HEAD
     "react-router-dom": "^7.8.1",
 <<<<<<< HEAD
     "zustand": "^5.0.7"
 =======
     "zustand": "^5.0.8"
 >>>>>>> 98654fa (Enhancing Recipe Sharing App with detailed management)
+=======
+    "zustand": "^5.0.8"
+>>>>>>> 3bc07ab (Initialize Recipe Sharing App with Zustand)
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",

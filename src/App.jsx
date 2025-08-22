@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React from 'react';
 import { useRecipeStore } from './recipeStore';
 import FavoritesList from './components/FavoritesList';
@@ -43,6 +44,17 @@ function App() {
       <AddRecipeForm />
       <RecipeList />
 >>>>>>> 98654fa (Enhancing Recipe Sharing App with detailed management)
+=======
+import RecipeList from './components/RecipeList';
+import AddRecipeForm from './components/AddRecipeForm';
+
+function App() {
+  return (
+    <div>
+      <h1>Recipe Sharing App</h1>
+      <AddRecipeForm />
+      <RecipeList />
+>>>>>>> 3bc07ab (Initialize Recipe Sharing App with Zustand)
     </div>
   );
 }

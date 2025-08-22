@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 3bc07ab (Initialize Recipe Sharing App with Zustand)
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
@@ -9,6 +12,7 @@ createRoot(document.getElementById('root')).render(
     <App />
   </StrictMode>,
 )
+<<<<<<< HEAD
 =======
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -27,3 +31,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>
 );
 >>>>>>> 98654fa (Enhancing Recipe Sharing App with detailed management)
+=======
+>>>>>>> 3bc07ab (Initialize Recipe Sharing App with Zustand)
