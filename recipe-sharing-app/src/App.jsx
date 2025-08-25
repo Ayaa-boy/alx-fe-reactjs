@@ -1,19 +1,20 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import RecipeDetail from "./components/RecipeDetail";
-import EditRecipeForm from "./components/EditRecipeForm";
-import RecipeList from "./components/RecipeList"; // your existing list component
+// src/App.jsx
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import RecipeList from "./components/RecipeList";
+import RecipeDetails from "./components/RecipeDetails";
 
-function App() {
+const App = () => {
   return (
     <Router>
+      <nav>
+        <Link to="/">Home</Link>
+      </nav>
       <Routes>
         <Route path="/" element={<RecipeList />} />
-        <Route path="/recipe/:id" element={<RecipeDetail />} />
-        <Route path="/edit/:id" element={<EditRecipeForm />} />
+        <Route path="/recipe/:id" element={<RecipeDetails />} />
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;
