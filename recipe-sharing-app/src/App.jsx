@@ -1,6 +1,6 @@
 // src/App.jsx
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { useRecipeStore } from "./recipeStore";
+import { useRecipeStore } from "./components/recipeStore";
 import RecipeDetails from "./components/RecipeDetails";
 
 function Home() {
