@@ -1,20 +1,16 @@
-// src/App.jsx
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RecipeList from "./components/RecipeList";
 import RecipeDetails from "./components/RecipeDetails";
 
-const App = () => {
+function App() {
   return (
     <Router>
-      <nav>
-        <Link to="/">Home</Link>
-      </nav>
       <Routes>
         <Route path="/" element={<RecipeList />} />
         <Route path="/recipe/:id" element={<RecipeDetails />} />
       </Routes>
     </Router>
   );
-};
+}
 
 export default App;
