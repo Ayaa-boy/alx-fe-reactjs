@@ -1,24 +1,21 @@
-// src/components/SearchBar.jsx
-import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useRecipeStore } from "./recipeStore";
 
-export default function SearchBar() {
-  const setSearchTerm = useRecipeStore((state) => state.setSearchTerm);
+export default function RecipeList() {
+  const recipes = useRecipeStore((state) => state.recipes);
+  const filteredRecipes = useRecipeStore((state) => state.filteredRecipes);
   const searchTerm = useRecipeStore((state) => state.searchTerm);
-  const filterRecipes = useRecipeStore((state) => state.filterRecipes);
 
-  // Update filteredRecipes whenever searchTerm changes
-  useEffect(() => {
-    filterRecipes();
-  }, [searchTerm]);
+  const displayRecipes = searchTerm ? filteredRecipes : recipes;
 
   return (
-    <input
-      type="text"
-      placeholder="Search recipes..."
-      value={searchTerm}
-      onChange={(e) => setSearchTerm(e.target.value)}
-      style={{ padding: "6px 10px", width: "300px", marginBottom: "16px" }}
-    />
+    <ul>
+      {displayRecipes.map((r) => (
+        <li key={r.id}>
+          <Link to={`/recipe/${r.id}`}>{r.title}</Link>
+        </li>
+      ))}
+      {displayRecipes.length === 0 && <p>No recipes found.</p>}
+    </ul>
   );
 }

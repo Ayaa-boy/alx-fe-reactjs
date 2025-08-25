@@ -1,4 +1,3 @@
-// src/components/recipeStore.js
 import { create } from "zustand";
 
 export const useRecipeStore = create((set) => ({
@@ -18,8 +17,8 @@ export const useRecipeStore = create((set) => ({
           recipe.ingredients.toLowerCase().includes(state.searchTerm.toLowerCase())
       ),
     })),
+  addRecipe: (recipe) =>
+    set((state) => ({ recipes: [...state.recipes, recipe] })),
   deleteRecipe: (id) =>
-    set((state) => ({
-      recipes: state.recipes.filter((r) => r.id !== id),
-    })),
+    set((state) => ({ recipes: state.recipes.filter((r) => r.id !== id) })),
 }));
