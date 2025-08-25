@@ -1,9 +1,9 @@
-// src/App.jsx
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import AddRecipeForm from './components/AddRecipeForm';
-import RecipeList from './components/RecipeList';
-import SearchBar from './components/SearchBar';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import RecipeList from "./components/RecipeList";
+import RecipeDetails from "./components/RecipeDetails";
+import AddRecipeForm from "./components/AddRecipeForm";
+import EditRecipeForm from "./components/EditRecipeForm";
+import SearchBar from "./components/SearchBar";
 
 function App() {
   return (
@@ -13,7 +13,9 @@ function App() {
         <SearchBar />
         <Routes>
           <Route path="/" element={<RecipeList />} />
+          <Route path="/recipe/:id" element={<RecipeDetails />} />
           <Route path="/add" element={<AddRecipeForm />} />
+          <Route path="/edit/:id" element={<EditRecipeForm />} />
         </Routes>
       </div>
     </Router>
