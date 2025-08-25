@@ -1,8 +1,8 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { useRecipeStore } from "./recipeStore";
-import { useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useRecipeStore } from "./components/recipeStore";
 import RecipeDetails from "./components/RecipeDetails";
 import SearchBar from "./components/SearchBar";
+import RecipeList from "./components/RecipeList";
 
 function Home() {
   const recipes = useRecipeStore((state) => state.recipes);
@@ -15,14 +15,8 @@ function Home() {
     <div style={{ padding: 16 }}>
       <h1>Recipe Sharing App</h1>
       <SearchBar />
-      <ul>
-        {displayRecipes.map((r) => (
-          <li key={r.id}>
-            <Link to={`/recipe/${r.id}`}>{r.title}</Link>
-          </li>
-        ))}
-        {displayRecipes.length === 0 && <p>No recipes found.</p>}
-      </ul>
+      <RecipeList recipes={displayRecipes} />
+      {displayRecipes.length === 0 && <p>No recipes found.</p>}
     </div>
   );
 }

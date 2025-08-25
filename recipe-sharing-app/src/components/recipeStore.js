@@ -1,4 +1,4 @@
-// src/recipeStore.js
+// src/components/recipeStore.js
 import { create } from "zustand";
 
 export const useRecipeStore = create((set) => ({
