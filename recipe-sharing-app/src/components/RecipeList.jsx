@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+// src/components/RecipeList.jsx
 import { useRecipeStore } from "../store/recipeStore";
 
 const RecipeList = () => {
@@ -6,12 +6,10 @@ const RecipeList = () => {
 
   return (
     <div>
-      <h1>Recipe List</h1>
       {recipes.map((recipe) => (
         <div key={recipe.id}>
-          <Link to={`/recipe/${recipe.id}`}>
-            <h2>{recipe.title}</h2>
-          </Link>
+          <h3>{recipe.title}</h3>
+          <p>{recipe.description}</p>
         </div>
       ))}
     </div>

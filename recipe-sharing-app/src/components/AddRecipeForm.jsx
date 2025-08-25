@@ -1,48 +1,35 @@
+// src/components/AddRecipeForm.jsx
 import { useState } from "react";
-import { useRecipeStore } from "./recipeStore";
+import { useRecipeStore } from "../store/recipeStore";
 
-export default function AddRecipeForm() {
+const AddRecipeForm = () => {
   const addRecipe = useRecipeStore((state) => state.addRecipe);
   const [title, setTitle] = useState("");
-  const [ingredients, setIngredients] = useState("");
-  const [time, setTime] = useState("");
+  const [description, setDescription] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!title) return alert("Enter a recipe title");
-    addRecipe({
-      id: Date.now(),
-      title,
-      ingredients,
-      time: parseInt(time) || 0,
-    });
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    addRecipe({ id: Date.now(), title, description });
     setTitle("");
-    setIngredients("");
-    setTime("");
-    alert("Recipe added ✅");
+    setDescription("");
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginBottom: 16 }}>
+    <form onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        placeholder="Title"
       />
-      <input
-        type="text"
-        placeholder="Ingredients"
-        value={ingredients}
-        onChange={(e) => setIngredients(e.target.value)}
-      />
-      <input
-        type="number"
-        placeholder="Time (mins)"
-        value={time}
-        onChange={(e) => setTime(e.target.value)}
+      <textarea
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        placeholder="Description"
       />
       <button type="submit">Add Recipe</button>
     </form>
   );
-}
+};
+
+export default AddRecipeForm;
