@@ -1,33 +1,19 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useRecipeStore } from "./components/recipeStore";
-import RecipeDetails from "./components/RecipeDetails";
-import SearchBar from "./components/SearchBar";
-import RecipeList from "./components/RecipeList";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import RecipeDetail from "./components/RecipeDetail";
+import EditRecipeForm from "./components/EditRecipeForm";
+import RecipeList from "./components/RecipeList"; // your existing list component
 
-function Home() {
-  const recipes = useRecipeStore((state) => state.recipes);
-  const filteredRecipes = useRecipeStore((state) => state.filteredRecipes);
-  const searchTerm = useRecipeStore((state) => state.searchTerm);
-
-  const displayRecipes = searchTerm ? filteredRecipes : recipes;
-
+function App() {
   return (
-    <div style={{ padding: 16 }}>
-      <h1>Recipe Sharing App</h1>
-      <SearchBar />
-      <RecipeList recipes={displayRecipes} />
-      {displayRecipes.length === 0 && <p>No recipes found.</p>}
-    </div>
-  );
-}
-
-export default function App() {
-  return (
-    <BrowserRouter>
+    <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/recipe/:id" element={<RecipeDetails />} />
+        <Route path="/" element={<RecipeList />} />
+        <Route path="/recipe/:id" element={<RecipeDetail />} />
+        <Route path="/edit/:id" element={<EditRecipeForm />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
+
+export default App;
