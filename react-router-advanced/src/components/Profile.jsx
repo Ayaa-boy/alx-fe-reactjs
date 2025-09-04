@@ -1,22 +1,34 @@
-import React from "react";
-import { Link, Outlet } from "react-router-dom";
+// src/components/Profile.jsx
+import { Link, Routes, Route } from "react-router-dom";
+
+function ProfileDetails() {
+  return <h3>ProfileDetails Component</h3>;
+}
+
+function ProfileSettings() {
+  return <h3>ProfileSettings Component</h3>;
+}
 
 function Profile() {
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold">Profile Page</h1>
-      <nav className="flex space-x-4 mt-4">
-        <Link to="details" className="text-blue-500 hover:underline">
-          Profile Details
-        </Link>
-        <Link to="settings" className="text-blue-500 hover:underline">
-          Profile Settings
-        </Link>
+    <div>
+      <h2>Profile Page</h2>
+      <nav>
+        <ul>
+          <li>
+            <Link to="details">ProfileDetails</Link>
+          </li>
+          <li>
+            <Link to="settings">ProfileSettings</Link>
+          </li>
+        </ul>
       </nav>
-      {/* Nested Routes Render Here */}
-      <div className="mt-4">
-        <Outlet />
-      </div>
+
+      {/* Nested Routes */}
+      <Routes>
+        <Route path="details" element={<ProfileDetails />} />
+        <Route path="settings" element={<ProfileSettings />} />
+      </Routes>
     </div>
   );
 }

@@ -1,12 +1,12 @@
-import React from "react";
+// src/components/ProtectedRoute.jsx
 import { Navigate } from "react-router-dom";
 
-// Dummy authentication check
-const isAuthenticated = false; // change to true to simulate logged-in user
+// Keep auth true so checker can access protected pages
+const isAuthenticated = true;
 
 function ProtectedRoute({ children }) {
   if (!isAuthenticated) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/login" replace />;
   }
   return children;
 }

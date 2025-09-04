@@ -1,48 +1,42 @@
-import React from "react";
+// src/App.jsx
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Profile from "./components/Profile";
-import ProfileDetails from "./components/ProfileDetails";
-import ProfileSettings from "./components/ProfileSettings";
+import Post from "./components/Post";
 
 function Home() {
-  return <h1 className="p-6 text-2xl">Welcome to Home Page</h1>;
+  return <h2>Home Page</h2>;
 }
 
-function Post({ id }) {
-  return <h1 className="p-6 text-xl">Post ID: {id}</h1>;
-}
-
-// React Router v6 way of getting params
-import { useParams } from "react-router-dom";
-function PostWrapper() {
-  const { id } = useParams();
-  return <Post id={id} />;
+function Login() {
+  return <h2>Login Page (simulate login here)</h2>;
 }
 
 function App() {
+  // Simulate authentication (set to false to test redirect)
+  const isAuthenticated = true;
+
   return (
     <Router>
-      <Navbar />
       <Routes>
+        {/* Basic route */}
         <Route path="/" element={<Home />} />
 
-        {/* Protected Profile Routes */}
+        {/* Login route */}
+        <Route path="/login" element={<Login />} />
+
+        {/* Protected route for Profile with nested routes */}
         <Route
-          path="/profile"
+          path="/profile/*"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute isAuthenticated={isAuthenticated}>
               <Profile />
             </ProtectedRoute>
           }
-        >
-          <Route path="details" element={<ProfileDetails />} />
-          <Route path="settings" element={<ProfileSettings />} />
-        </Route>
+        />
 
-        {/* Dynamic Route */}
-        <Route path="/post/:id" element={<PostWrapper />} />
+        {/* Dynamic route for blog posts */}
+        <Route path="/post/:id" element={<Post />} />
       </Routes>
     </Router>
   );
