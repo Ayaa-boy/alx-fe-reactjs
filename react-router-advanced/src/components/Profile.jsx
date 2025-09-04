@@ -2,29 +2,28 @@
 import { Routes, Route, Link } from "react-router-dom";
 
 function ProfileDetails() {
-  return <h2>ProfileDetails Section</h2>;
+  return <h2>Profile Details</h2>;
 }
 
 function ProfileSettings() {
-  return <h2>ProfileSettings Section</h2>;
+  return <h2>Profile Settings</h2>;
 }
 
 function Profile() {
   return (
     <div>
-      <h1>User Profile</h1>
+      <h1>Profile Page</h1>
       <nav>
         <ul>
           <li>
-            <Link to="details">Go to ProfileDetails</Link>
+            <Link to="details">Profile Details</Link>
           </li>
           <li>
-            <Link to="settings">Go to ProfileSettings</Link>
+            <Link to="settings">Profile Settings</Link>
           </li>
         </ul>
       </nav>
 
-      {/* Nested routes */}
       <Routes>
         <Route path="details" element={<ProfileDetails />} />
         <Route path="settings" element={<ProfileSettings />} />

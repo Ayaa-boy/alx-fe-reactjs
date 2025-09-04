@@ -3,7 +3,13 @@ import { useParams } from "react-router-dom";
 
 function BlogPost() {
   const { id } = useParams();
-  return <h2>Viewing Blog Post ID: {id}</h2>;
+
+  return (
+    <div>
+      <h1>Blog Post</h1>
+      <p>You are viewing blog post with ID: {id}</p>
+    </div>
+  );
 }
 
 export default BlogPost;
