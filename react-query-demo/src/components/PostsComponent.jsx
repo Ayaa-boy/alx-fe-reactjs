@@ -2,7 +2,7 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 
-// Fetch posts from API
+// Function to fetch posts from JSONPlaceholder
 const fetchPosts = async () => {
   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
   if (!res.ok) throw new Error("Failed to fetch posts");
@@ -10,11 +10,14 @@ const fetchPosts = async () => {
 };
 
 const PostsComponent = () => {
+  // useQuery hook for fetching posts
   const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: ["posts"],
     queryFn: fetchPosts,
-    staleTime: 30000, // 30 seconds caching
-    cacheTime: 60000, // 1 minute cache
+    staleTime: 30000,           // caching for 30 seconds
+    cacheTime: 60000,           // cache lasts 1 minute
+    refetchOnWindowFocus: true, // automatically refetch when tab/window refocused
+    keepPreviousData: true,     // keeps old data visible while refetching
   });
 
   if (isLoading) return <p className="text-center mt-4">Loading posts...</p>;
@@ -24,6 +27,7 @@ const PostsComponent = () => {
     <div className="max-w-3xl mx-auto mt-6">
       <h2 className="text-xl font-bold mb-4">Posts</h2>
 
+      {/* Button to manually refetch posts */}
       <button
         onClick={() => refetch()}
         className="bg-blue-500 text-white px-4 py-2 rounded mb-4 hover:bg-blue-600"
