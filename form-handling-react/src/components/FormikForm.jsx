@@ -1,45 +1,71 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-const validationSchema = Yup.object({
-  username: Yup.string().required("Username is required"),
-  email: Yup.string().email("Invalid email").required("Email is required"),
-  password: Yup.string().min(6, "Password must be at least 6 characters").required("Password is required"),
-});
-
 function FormikForm() {
+  const validationSchema = Yup.object({
+    username: Yup.string().required("Username is required"),
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    password: Yup.string().required("Password is required"),
+  });
+
   return (
     <Formik
       initialValues={{ username: "", email: "", password: "" }}
       validationSchema={validationSchema}
-      onSubmit={(values) => {
-        alert("Formik form submitted successfully!");
-        console.log("Formik User Data:", values);
+      onSubmit={(values, { resetForm }) => {
+        console.log("Submitting:", values);
+        alert("✅ User registered successfully (Formik)!");
+        resetForm();
       }}
     >
-      <Form>
-        <h2>Formik Registration Form</h2>
+      {() => (
+        <Form className="flex flex-col gap-4 max-w-md mx-auto bg-white p-6 rounded-xl shadow-md">
+          <h2 className="text-2xl font-bold text-center">Formik Form</h2>
 
-        <div>
-          <label>Username:</label>
-          <Field type="text" name="username" />
-          <ErrorMessage name="username" component="p" style={{ color: "red" }} />
-        </div>
+          <Field
+            name="username"
+            type="text"
+            placeholder="Username"
+            className="p-2 border rounded"
+          />
+          <ErrorMessage
+            name="username"
+            component="p"
+            className="text-red-500"
+          />
 
-        <div>
-          <label>Email:</label>
-          <Field type="email" name="email" />
-          <ErrorMessage name="email" component="p" style={{ color: "red" }} />
-        </div>
+          <Field
+            name="email"
+            type="email"
+            placeholder="Email"
+            className="p-2 border rounded"
+          />
+          <ErrorMessage
+            name="email"
+            component="p"
+            className="text-red-500"
+          />
 
-        <div>
-          <label>Password:</label>
-          <Field type="password" name="password" />
-          <ErrorMessage name="password" component="p" style={{ color: "red" }} />
-        </div>
+          <Field
+            name="password"
+            type="password"
+            placeholder="Password"
+            className="p-2 border rounded"
+          />
+          <ErrorMessage
+            name="password"
+            component="p"
+            className="text-red-500"
+          />
 
-        <button type="submit">Register</button>
-      </Form>
+          <button
+            type="submit"
+            className="bg-green-600 text-white py-2 rounded hover:bg-green-700"
+          >
+            Register
+          </button>
+        </Form>
+      )}
     </Formik>
   );
 }

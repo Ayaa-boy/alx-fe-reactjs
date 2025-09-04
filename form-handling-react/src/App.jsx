@@ -1,19 +1,12 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import RegistrationForm from "./components/RegistrationForm";
 import FormikForm from "./components/FormikForm";
 
 function App() {
   return (
-    <Router>
-      <nav style={{ display: "flex", gap: "1rem" }}>
-        <Link to="/">Controlled Form</Link>
-        <Link to="/formik">Formik Form</Link>
-      </nav>
-      <Routes>
-        <Route path="/" element={<RegistrationForm />} />
-        <Route path="/formik" element={<FormikForm />} />
-      </Routes>
-    </Router>
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center gap-10 p-6">
+      <RegistrationForm />
+      <FormikForm />
+    </div>
   );
 }
 

@@ -1,78 +1,71 @@
 import { useState } from "react";
 
 function RegistrationForm() {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
-
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
 
   const validate = () => {
     const newErrors = {};
-    if (!formData.username) newErrors.username = "Username is required";
-    if (!formData.email) newErrors.email = "Email is required";
-    if (!formData.password) newErrors.password = "Password is required";
+    if (!username) newErrors.username = "Username is required";
+    if (!email) newErrors.email = "Email is required";
+    if (!password) newErrors.password = "Password is required";
     return newErrors;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-    } else {
-      alert("Form submitted successfully!");
-      console.log("User Data:", formData);
+    const newErrors = validate();
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
     }
+    setErrors({});
+    console.log("Submitting:", { username, email, password });
+    alert("✅ User registered successfully (controlled form)!");
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Controlled Registration Form</h2>
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col gap-4 max-w-md mx-auto bg-white p-6 rounded-xl shadow-md"
+    >
+      <h2 className="text-2xl font-bold text-center">Controlled Form</h2>
 
-      <div>
-        <label>Username:</label>
-        <input
-          type="text"
-          name="username"
-          value={formData.username}
-          onChange={handleChange}
-        />
-        {errors.username && <p style={{ color: "red" }}>{errors.username}</p>}
-      </div>
+      <input
+        type="text"
+        placeholder="Username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        className="p-2 border rounded"
+      />
+      {errors.username && <p className="text-red-500">{errors.username}</p>}
 
-      <div>
-        <label>Email:</label>
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-        {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
-      </div>
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        className="p-2 border rounded"
+      />
+      {errors.email && <p className="text-red-500">{errors.email}</p>}
 
-      <div>
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-        />
-        {errors.password && (
-          <p style={{ color: "red" }}>{errors.password}</p>
-        )}
-      </div>
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        className="p-2 border rounded"
+      />
+      {errors.password && <p className="text-red-500">{errors.password}</p>}
 
-      <button type="submit">Register</button>
+      <button
+        type="submit"
+        className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+      >
+        Register
+      </button>
     </form>
   );
 }
