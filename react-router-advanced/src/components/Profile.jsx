@@ -1,30 +1,30 @@
 // src/components/Profile.jsx
-import { Link, Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 
 function ProfileDetails() {
-  return <h3>ProfileDetails Component</h3>;
+  return <h2>ProfileDetails Section</h2>;
 }
 
 function ProfileSettings() {
-  return <h3>ProfileSettings Component</h3>;
+  return <h2>ProfileSettings Section</h2>;
 }
 
 function Profile() {
   return (
     <div>
-      <h2>Profile Page</h2>
+      <h1>User Profile</h1>
       <nav>
         <ul>
           <li>
-            <Link to="details">ProfileDetails</Link>
+            <Link to="details">Go to ProfileDetails</Link>
           </li>
           <li>
-            <Link to="settings">ProfileSettings</Link>
+            <Link to="settings">Go to ProfileSettings</Link>
           </li>
         </ul>
       </nav>
 
-      {/* Nested Routes */}
+      {/* Nested routes */}
       <Routes>
         <Route path="details" element={<ProfileDetails />} />
         <Route path="settings" element={<ProfileSettings />} />
