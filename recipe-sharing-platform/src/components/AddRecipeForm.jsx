@@ -1,30 +1,37 @@
-// src/components/AddRecipeForm.jsx
 import { useState } from "react";
 
 function AddRecipeForm() {
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [steps, setSteps] = useState("");
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState("");
+
+  // Validation function
+  const validate = () => {
+    const newErrors = {};
+    if (!title) newErrors.title = "Title is required.";
+    if (!ingredients) newErrors.ingredients = "Ingredients are required.";
+    if (!steps) newErrors.steps = "Preparation steps are required.";
+    return newErrors;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validation
-    if (!title || !ingredients || !steps) {
-      setError("⚠️ All fields are required.");
+    const newErrors = validate();
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       setSuccess("");
       return;
     }
 
-    // Clear error and set success message
-    setError("");
+    setErrors({});
     setSuccess("✅ Recipe added successfully!");
 
     console.log({ title, ingredients, steps });
 
-    // Reset form fields
+    // Reset form
     setTitle("");
     setIngredients("");
     setSteps("");
@@ -39,30 +46,40 @@ function AddRecipeForm() {
         Add New Recipe
       </h2>
 
-      {error && <p className="text-red-500 text-sm">{error}</p>}
       {success && <p className="text-green-600 text-sm">{success}</p>}
 
-      <input
-        type="text"
-        placeholder="Recipe Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
-      />
+      <div>
+        <input
+          type="text"
+          placeholder="Recipe Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
+        />
+        {errors.title && <p className="text-red-500 text-sm">{errors.title}</p>}
+      </div>
 
-      <textarea
-        placeholder="Ingredients (comma separated)"
-        value={ingredients}
-        onChange={(e) => setIngredients(e.target.value)}
-        className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full h-24"
-      />
+      <div>
+        <textarea
+          placeholder="Ingredients (comma separated)"
+          value={ingredients}
+          onChange={(e) => setIngredients(e.target.value)}
+          className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full h-24"
+        />
+        {errors.ingredients && (
+          <p className="text-red-500 text-sm">{errors.ingredients}</p>
+        )}
+      </div>
 
-      <textarea
-        placeholder="Preparation Steps"
-        value={steps}
-        onChange={(e) => setSteps(e.target.value)}
-        className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full h-32"
-      />
+      <div>
+        <textarea
+          placeholder="Preparation Steps"
+          value={steps}
+          onChange={(e) => setSteps(e.target.value)}
+          className="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full h-32"
+        />
+        {errors.steps && <p className="text-red-500 text-sm">{errors.steps}</p>}
+      </div>
 
       <button
         type="submit"
