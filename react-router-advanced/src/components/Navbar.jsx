@@ -1,18 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Navbar({ isAuthenticated, setIsAuthenticated }) {
+function Navbar() {
   return (
-    <nav style={{ marginBottom: "20px" }}>
-      <Link to="/">Home</Link> | <Link to="/about">About</Link> |{" "}
-      <Link to="/profile">Profile</Link> | <Link to="/post/1">Sample Post</Link>
-
-      <button
-        style={{ marginLeft: "20px" }}
-        onClick={() => setIsAuthenticated(!isAuthenticated)}
-      >
-        {isAuthenticated ? "Logout" : "Login"}
-      </button>
+    <nav className="bg-gray-800 text-white p-4 flex space-x-6">
+      <Link to="/" className="hover:text-yellow-400">
+        Home
+      </Link>
+      <Link to="/profile" className="hover:text-yellow-400">
+        Profile
+      </Link>
+      <Link to="/post/123" className="hover:text-yellow-400">
+        Dynamic Post
+      </Link>
     </nav>
   );
 }

@@ -1,9 +1,12 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 
-function ProtectedRoute({ isAuthenticated, children }) {
+// Dummy authentication check
+const isAuthenticated = false; // change to true to simulate logged-in user
+
+function ProtectedRoute({ children }) {
   if (!isAuthenticated) {
-    return <Navigate to="/" />;
+    return <Navigate to="/" replace />;
   }
   return children;
 }

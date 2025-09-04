@@ -1,29 +1,38 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Profile from "./pages/Profile";
-import ProfileDetails from "./pages/ProfileDetails";
-import ProfileSettings from "./pages/ProfileSettings";
-import Post from "./pages/Post";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Profile from "./components/Profile";
+import ProfileDetails from "./components/ProfileDetails";
+import ProfileSettings from "./components/ProfileSettings";
+
+function Home() {
+  return <h1 className="p-6 text-2xl">Welcome to Home Page</h1>;
+}
+
+function Post({ id }) {
+  return <h1 className="p-6 text-xl">Post ID: {id}</h1>;
+}
+
+// React Router v6 way of getting params
+import { useParams } from "react-router-dom";
+function PostWrapper() {
+  const { id } = useParams();
+  return <Post id={id} />;
+}
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
   return (
     <Router>
-      <Navbar isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
 
-        {/* Protected Route */}
+        {/* Protected Profile Routes */}
         <Route
-          path="/profile/*"
+          path="/profile"
           element={
-            <ProtectedRoute isAuthenticated={isAuthenticated}>
+            <ProtectedRoute>
               <Profile />
             </ProtectedRoute>
           }
@@ -33,10 +42,7 @@ function App() {
         </Route>
 
         {/* Dynamic Route */}
-        <Route path="/post/:id" element={<Post />} />
-
-        {/* Catch all */}
-        <Route path="*" element={<Navigate to="/" />} />
+        <Route path="/post/:id" element={<PostWrapper />} />
       </Routes>
     </Router>
   );
